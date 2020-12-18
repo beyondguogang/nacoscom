@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title src='img/g.svg'>nacos</title>
+    <link rel="shortcut icon" href="img/g.svg">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/item.css" rel="stylesheet">
+    <link href="css/seven.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/modify.css">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/group.css">
+    <!-- <link rel="stylesheet" href="codemirror/lib/codemirror.css"> -->
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="css/server-find-detail.css">
+</head>
+<body>
+<div id="app" v-cloak>
+    <div style="display:block" >
+        <!--内容-->
+        <div class="content"  > 
+        <!--右边栏-->
+        <div class="page" >
+        <!--右边栏头部导航-->
+        <div class="header" style="font-size: 22px">
+        <i style=" border:1px solid deepskyblue"></i>分组管理
+        </div>
+        <button class="btn-six" @click="addGroupShow" :style="{opacity:new_role}">新建分组</button>
+        <div style="clear: both"></div>
+        <div class="data" >
+   
+        <table>
+        <thead>
+        <tr>
+        <th class="add" style="width:25% ">分组名称</th>
+        <th class="add" style="width:25% ">所属项目</th>
+        <!-- <th class="add" style="width:20% ">所属名称空间</th> -->
+        <th class="add"  style="width:25% ">描述</th>
+        <th class="add"  style="width:25% ">操作</th>
+        </tr> 
+        </thead>
+        <tbody v-if="t_body">
+            <tr v-for="group in groupList">
+        <td>{{group.fld_name}}</td>
+        <td>{{group.pname}}</td>
+        <!-- <td>{{group.fld_namespace_id}}</td> -->
+        <td>{{group.fld_des}}</td>
+        <td>
+        <!-- <a @click="groupDetail" ref="isdetail" :fld_id="group.fld_id" href="#javascript ">详情</a> -->
+        <a @click="groupEdit" ref="isedit" :fld_id="group.fld_id" href="#javascript" >编辑</a>
+        <a @click="pointer_del&& groupDel($event)" ref="isdel" :fld_id="group.fld_id" href="#javascript" :style="{opacity:opacity_del}">删除</a>
+
+        </td>
+        </tr>
+        </tbody>     
+        
+        
+        </table>
+        </div >
+   
+
+
+            <div class="reset" style="display: none" :style="{display:spring}">
+                <div class="use-title clearfix" >
+                    <big class="title-t">新建分组</big>
+                    <div class="use-div">
+                        <img  class="error newly-build1 clearfix" src="img/resizeApi.png" alt="12" @click="cross" >
+                    </div>
+
+                </div>
+                <div class="input-box-group">
+                    <div class="slected-group"><i>*</i><span>所属项目:<select ref="projectnamen"><option value ="">请选择</option><option v-for="project in projectList" :id="'select-'+project.fld_id" :value ="project.fld_id">{{project.fld_name}}</option></select></span>  </div>
+
+
+                    <div class="input-tow-group"><label for="news2"><i>*</i>分组名称:<input  autocomplete="off" ref="groupname" id="news2" type="text"></label></div>
+                    <div class="input-three-group"> <label for="old1"><i>*</i>描述:<input  autocomplete="off" ref="groupdes" id="old1" type="text"></label></div>
+                </div>
+
+
+                <div class="determine-cancel">
+                    <button @click="pointer_edit && add()" class="determine" :style="{opacity:opacity_edit}">确定</button>
+                    <button class="cancel" @click="cross">取消</button>
+
+                </div>
+                <!--                    表单提示弹框-->
+
+            </div>
+            <div style="display: none;" class="server-spring-box" v-show="shows">
+                <p class="server-spring-content">{{verification}}</p>
+            </div>
+
+        </div>  
+        </div>
+        </div>
+        <!-- 提示框 -->
+        <div class="tips" v-if="show_tips_box">
+            <div class="popup">
+                <p class="content-tips">{{current_state}}</p>
+            </div>
+          </div>
+</div>
+</body>
+</html>
+<script src="node_modules/babel-polyfill/dist/polyfill.js"></script>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+<!-- <script src="codemirror/lib/codemirror.js"></script> -->
+<script src="node_modules/codemirror/lib/codemirror.js"></script>
+<script src="lib/browser.min.js"></script>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="js/config.js"></script>
+<script  type="text/babel" src="js/group.js?v=1"></script>
+
+

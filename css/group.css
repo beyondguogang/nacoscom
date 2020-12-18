@@ -1,0 +1,67 @@
+.group-input{
+    margin-left: 13px;
+}
+.group-label{
+    margin-left: 0px;
+}
+#space-one{
+    margin-left: 12px;
+    width: 100%;
+    font-size: 12px;
+    padding-top: 20px;
+}
+.slected-group{
+    text-align: center;
+    margin-left: 8px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.slected-group select{
+    width: 70%;
+    border-radius: 5px;
+    height: 36px;
+    border: 1px solid #dcdee3;
+    margin-left: 10px;
+    outline: none;
+    cursor: pointer;
+    color: #5a6268;
+}
+.input-box-group i{
+    color: red;
+}
+.slected-group-one{
+    margin-left: -5px;
+}
+.input-box-group{
+     font-size: 14px;
+    margin-top: 15px;
+}
+.input-tow-group label {
+    width: 100%;
+    margin-left: 61px;
+}
+.input-three-group label {
+    width: 100%;
+    margin-left: 88px;
+}
+.input-tow-group input {
+    margin-left: 10px;
+    width: 70%;
+    margin-bottom: 11px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #dcdee3;
+    outline: none;
+}
+.input-three-group input {
+    margin-left: 10px;
+    width: 70%;
+    margin-bottom: 20px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #dcdee3;
+    outline: none;
+}
+[v-cloak] {
+    display: none;
+}

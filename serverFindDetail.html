@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title src='img/g.svg'>nacos</title>
+    <link rel="shortcut icon" href="img/g.svg">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/item.css" rel="stylesheet">
+    <link href="css/seven.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/modify.css">
+    <link rel="stylesheet" href="node_modules/codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/blackboard.css">
+
+    <link rel="stylesheet" href="css/server-find-detail.css">
+
+
+
+    
+</head>
+<body>
+<div id="app" v-cloak>
+    <div style="display: none" v-show="detail_clo">
+        <!--内容-->
+        <div class="content">
+            <!--右边栏-->
+            <div class="page det-box" >
+                <!--右边栏头部导航-->
+                <div style="display: block">
+                    <form action="" class="in " >
+                        <div class="box-seven ">
+                            <div><h3 class="server-h">服务详情</h3></div>
+                            <!-- <div class="clearfix">
+                                <div class="server-button ">
+                                    <span class="server-edit" @click="serverFindEditShow">编辑服务</span>
+                                    <span class="server-return" @click="detailReturn">返回</span>
+                                </div>
+                            </div> -->
+
+                            <div class="case-seven" style="margin-left:5px;">
+                                <label for="in-seven" style="display: inline">
+                                    <!-- <i>*</i> -->
+                                    服务名: {{server_name}}
+                                </label> 
+                                <!-- <span  class="sp-seven">
+    <input autocomplete="off" ref="datakey" id="in-seven" type="text" class="in-seven" disabled="disabled">
+    </span> -->
+                            </div>
+
+                            <div class="case-seven case-seven1" style="margin-left:7px;">
+                                <label  style="display: inline">
+                                    <!-- <i>*</i> -->
+                                    Group: {{group_name}}
+                                </label>
+                                <!-- <span  class="sp-seven">
+                                <select disabled="disabled" name="" id="selectValue1" class="in-seven"><option v-for="group in groupList" :id="'selected1-'+group.fld_id" :value="group.fld_id" >{{group.fld_name}}</option></select>
+    </span> -->
+                            </div>
+                        </div>
+
+                        <div class="seven-area">
+                            <div class="seven-d" style="margin-left: 8px;">
+                                <!-- <i style="color:red">*</i> -->
+                                <span>描述: {{describe}}
+
+                            </span></div>
+                            <!-- <textarea disabled="disabled" autocomplete="off" ref="datades" 
+                            style="width:90%;min-height: 300px;margin-left: 18px;border-radius: 5px;outline: none;"></textarea> -->
+                        </div>
+                        <div class="seven-release">
+                        </div>
+                    </form>
+                    <div class="server-tal">
+                        
+                        <table class="server-table" border="0" cellspacing="0" cellpadding="0">
+                            <thead>
+                            <tr>
+                                <th style="width: 10%;">IP</th>
+                                <th>端口</th>
+                                <th>临时实例</th>
+                                <th>权重</th>
+                                <th>健康状态</th>
+                                <th style="width:60%">元数据</th>
+                                <!-- <th style="width: 10%;">操作</th> -->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="example in exampleList">
+                                <td>{{example.fld_name}}</td>
+                                <td>{{example.fld_port}}</td>
+                                <td>{{example.fld_is_tem}}</td>
+                                <td>{{example.fld_weight}}</td>
+                                <td>{{example.fld_ishealthy}}</td>
+                                <td>{{example.fld_metadata}}</td>
+                                <!-- <td>
+                                    <div class="detail-operation">
+                                        <button class="server-edit" @click="serverEdit(example.fld_id)">编辑</button>
+                                        <button class="server-offline">下线</button>
+                                    </div>
+
+                                </td> -->
+                            </tr>
+                            </tbody>
+
+                        </table>
+                        
+                    </div>
+                    <div class="clearfix">
+                            <div class="server-button ">
+                                <span class="server-edit" @click="edit_confirm && serverFindEditShow()" :style="{opacity:edit_role}">编辑服务</span>
+                                <span class="server-return" @click="detailReturn">返回</span>
+                            </div>
+                        </div>
+                </div>
+                    <div style="height: 100px"></div>
+                <!--隐藏的弹窗-->
+                <!--弹窗 begin-->
+                <div style="display: none" v-show="server" class="server-box">
+                        <div><h5 class="server-header">更新服务</h5>  <img src="img/resizeApi.png" alt="" class="server-img" @click="updateClose"></div>
+                            <div class="server-big">
+                                <div class="server-tow">
+                                    <div class="server-name"><span class="server-name-head">服务名:</span><span id="sfn" class="server-name-content">login_server</span></div>
+                                    <!-- <div class="server-input"><label >保护阈值:</label> <input autocomplete="off" id="sfyz" value="0" placeholder="0" type="text" class=""></div> -->
+                                    <div class="server-input1"><label >Group:</label>
+<!--                                        <input id="  " type="text" class="" placeholder="Global">-->
+                                        <select id="selectValue2" name="" >
+                                            <option v-for="group in groupList" :id="'selected2-'+group.fld_id" :value="group.fld_id">{{group.fld_name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="">
+                                        <div class="server-describe "></div>
+                                    </div>
+                                    <div >
+                                        <div class="server-meta">描述:</div> <textarea class="texttarea1" name="code_t1" id="code_t1"></textarea>
+
+                                    </div>
+
+                                </div>
+                                <div class="server-find-btn">
+                                    <button @click="serverFindAdd" class="server-find-true">确定</button>
+                                    <button class="server-find-false" @click="updateClose">取消</button>
+                                </div>
+                                <!--表单提示弹框-->
+                                <div style="display: none;" class="server-spring-box" v-show="shows">
+                                    <p class="server-spring-content">{{verification}}</p>
+                                </div>
+                            </div>
+                </div>
+                <!--弹窗end-->
+                <!--弹窗1 begin-->
+                
+                <!--弹窗1end-->
+                <!--弹窗2 begin-->
+                <div  id="edit1"  v-show="edit"  class="server-box clearfix">
+                    <div><h5 class="server-header">编辑实例</h5>  <img src="img/resizeApi.png" alt="" class="server-img" @click="popupClose"></div>
+                    <div class="server-big">
+                        <div class="server-tow">
+                            <div class="server-name1"><span class="server-name-head1">IP:</span><span id="exampleName" class="server-name-content1">SandboxLogin_9010</span></div>
+                            <div class="server-name2"><span class="server-name-head2">端口:</span><span id="examplePort" class="server-name-content2">x</span></div>
+                            <div class="server-input5"><label >权重:</label><input style="border: 1px solid #5a6268;
+    outline: none;" autocomplete="off" id="weight"  type="text" class="" placeholder="Global"></div>
+                            <div class="server-describe1">是否上线:
+                                <div class="slide-one" @click="offTwo" :style="{background:bg3}"><i :style="{left:off,transform:offOne}"></i></div></div>
+
+                            <div >
+                                <div class="server-meta">元数据:</div> <textarea ref="datavalue" class="texttarea" name="code_t3" id="code_t3"></textarea>
+
+                            </div>
+
+                        </div>
+                        <div class="server-find-btn">
+                            <button @click="exampleEdit" class="server-find-true">确定</button>
+                            <button class="server-find-false">取消</button>
+                        </div>
+                    </div><div style="display: none;" class="server-spring-box" v-show="shows">
+                    <p class="server-spring-content">{{verification}}</p>
+                </div>
+                </div>
+                <!--弹窗2end-->
+            </div>
+        </div>
+    </div>
+     <!-- 提示框 -->
+     <div class="tips" v-if="show_tips_box">
+        <div class="popup">
+            <p class="content-tips">{{current_state}}</p>
+        </div>
+      </div>
+</div>
+</body>
+</html>
+<script src="node_modules/babel-polyfill/dist/polyfill.js"></script>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+<script src="node_modules/codemirror/lib/codemirror.js"></script>
+<script src="node_modules/codemirror/addon/edit/matchbrackets.js"></script>
+<script src="node_modules/codemirror/addon/selection/active-line.js"></script>
+<script src="node_modules/codemirror/addon/hint/show-hint.js"></script>
+<script src="node_modules/codemirror/addon/hint/html-hint.js"></script>
+<script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="lib/browser.min.js" ></script>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+
+<script src="js/config.js"></script>
+<script type="text/babel" src="js/serverFindDetail.js"></script>
+
+
+
+
+

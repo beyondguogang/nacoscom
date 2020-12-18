@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title src='img/g.svg'>nacos</title>
+    <link rel="shortcut icon" href="img/g.svg">
+    <link rel="stylesheet" href="node_modules/codemirror/addon/hint/show-hint.css">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/item.css" rel="stylesheet">
+    <link href="css/seven.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/modify.css">
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/blackboard.css">
+<!--    <link rel="stylesheet" href="css/server-find-detail.css">-->
+
+</head>
+<body>
+<div id="app" v-cloak>
+    <div style="display: block;margin-top: 20px;">
+        <!--内容-->
+        <div class="content">
+            <!--右边栏-->
+            <div class="page" >
+                <!--右边栏头部导航-->
+                <form action="" class="in ">
+                    <div class="box-seven">
+                        <div><h4>新建配置</h4></div>
+                        <div class="case-seven">
+                            <label for="in-seven2">
+                                <i>*</i>
+                                Data ID:
+                            </label> <span  class="sp-seven">
+        <input autocomplete="off" ref="datakey" id="in-seven2" type="text" class="in-seven">
+        </span>
+                        </div>
+                       
+                         <div class="case-seven case-seven1">
+                            <label for="in-seven3">
+                                <i>*</i>
+                                Group:
+                            </label><span  class="sp-seven">
+                            <select id="in-seven3" class="in-seven">
+                                    <option v-for="group in groupList" :id="'selected-'+group.fld_id" :value="group.fld_id">{{group.fld_name}}</option>
+                            </select>
+        </span>
+                        </div>
+                       
+                        </div>
+                        <div class="container-seven">
+                        <div class="text-seven " > <span>描述:</span></div>
+                       
+                        <textarea ref="datades" cols="20" rows="20"></textarea>
+                        </div>
+    
+                        <div class="seven-area"> 
+                        <div class="seven-d"><i style="color:red">*</i><span>配置内容:</span></div>
+                        <textarea ref="datavalue" class="texttarea" name="code_textarea" id="code_textarea"></textarea> 
+                        </div>
+                        <div class="seven-release">
+                        <a @click.stop.prevent="release && serverAdd()" :style="{opacity:release_role}">发布</a><a :href="urlreturn" >返回</a>
+    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div style="display: none;" class="server-spring-box" v-show="shows">
+        <p class="server-spring-content">{{verification}}</p>
+    </div>
+     <!-- 提示框 -->
+     <div class="tips" v-if="show_tips_box">
+        <div class="popup">
+            <p class="content-tips">{{current_state}}</p>
+        </div>
+      </div>
+</div>
+</body>
+</html>
+<script src="node_modules/babel-polyfill/dist/polyfill.js"></script>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+<!-- <script src="codemirror/lib/codemirror.js"></script> -->
+<script src="node_modules/codemirror/lib/codemirror.js"></script>
+<script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
+<script src="node_modules/codemirror/addon/edit/matchbrackets.js"></script>
+<script src="lib/browser.min.js" ></script>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/codemirror/addon/selection/active-line.js"></script>
+<script src="node_modules/codemirror/addon/hint/show-hint.js"></script>
+<script src="node_modules/codemirror/addon/hint/html-hint.js"></script>
+<script src="js/config.js"></script>
+<script type="text/babel" src="js/serverConfDetail.js"></script>
+
+
+

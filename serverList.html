@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title src='img/g.svg'>nacos</title>
+    <link rel="shortcut icon" href="img/g.svg">
+    <link rel="stylesheet" href="css/server-list.css">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/item.css" rel="stylesheet">
+    <link href="css/seven.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/modify.css">
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="css/server-find-detail.css">
+
+
+    
+</head>
+<body>
+<div id="app" v-cloak>
+    <div style="display: block" >
+        <div style="display: block" v-show="back">
+            <!--内容-->
+            <div class="content clearfix" >
+                <div class="page">
+                    <!--右边栏头部导航-->
+                    <div class="header">
+                        <h5>配置管理</h5>
+                    </div>
+                    <!-- <div class="content-right-nav">
+                        <span @click="nameChange('name_id'+name.fld_id,$event)" :id="'name_id'+name.fld_id" :nameid="name.fld_id"
+                              v-for="(name,i) in nameList"   :class="`${i>0?'sp2':'sp1'} ${i===nameList.length-1?'sp3':''}`"  >{{name.fld_name}}
+                        </span>
+                    </div> -->
+                    <div>
+                        <div controller="sclc" class="plus "><a   @click="add" :style="'pointerEvents:'+pointer+';opacity:'+opacity+';'">
+                            <img src="img/xiaochazi.png" alt="" ></a></div>
+                    </div>
+
+
+                    <!--动态显示查询结果  -->
+                    
+                    <!--显示隐藏-->
+    
+                    <!--数据 头-->
+                   <div class="server-list">
+                       <div class="server-query"><label >Data ID:<input autocomplete="off" ref="namevalue" type="text" placeholder="模糊查询请输入Data Id"></label></div>
+                       <div class="server-group"><label >Group:<input autocomplete="off" ref="groupvalue" type="text" placeholder="模糊查询请输入Group"></label></div>
+                       <div class="server-btn"><button @click="search">搜索</button></div>
+                        </div>
+                    <div class="data">
+
+
+                        <table>
+                            <thead>
+                            <tr>  
+                                <th class="add" style="width: 20%">
+                                    <div>Data Id</div>
+                                </th>
+                                <th class="add" style="width: 20%">
+                                    <div>归属分组</div>
+                                </th>
+                                
+                                <th class="add" style="width: 20%">
+                                    <div>归属项目</div>
+                                </th>
+                                <th class="add" style="width: 20%">
+                                    <div>操作</div>
+                                </th>
+                            </tr>
+                            
+                            </thead>
+                            <tbody v-if="t_body">
+                                <tr v-for="server in serverList" style="background: #e2e3e5">  
+                                    <td class="add" style="background:white ">{{server.fld_key}}</td>
+                                    <td class="add" style="background:white ">{{server.fld_group}}</td>
+                                    <td class="add" style="background:white ">{{server.fld_project}}</td>
+                                    <td class="add" style="background:white ">
+<!--                                        <a href="#javascript ">详情</a>-->
+                                        <a @click="serverDetail(server.fld_id)" href="#javascript" :style="{opacity:edit_role}">编辑</a>
+                                        <a @click="serverDelFlag && serverDel(server.fld_id)" href="#javascript" :style="{opacity:del_role}">删除</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--数据内容 -->
+                    
+                </div>
+                <!--底部-->
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示框 -->
+    <div class="tips" v-if="show_tips_box">
+        <div class="popup">
+            <p class="content-tips">{{current_state}}</p>
+        </div>
+      </div>
+</div>
+</body>
+</html>
+<script src="node_modules/babel-polyfill/dist/polyfill.js"></script>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+<script src="node_modules/codemirror/lib/codemirror.js"></script>
+<script src="lib/browser.min.js" ></script>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="js/config.js"></script>
+<script type="text/babel" src="js/serverList.js?v=2"></script>
+
+
+

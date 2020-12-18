@@ -1,0 +1,45 @@
+.server-list-group1{
+    border: 0px solid #95999c;
+    text-align: center;
+    background: #ebecf0;
+    margin-bottom: 10px;
+    margin-top: -38px;
+    margin-left: 20px;
+    height: 30px;
+    color: rgb(0, 193, 222);
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.server-list-group2{
+    border: 0px solid #95999c;
+    text-align: center;
+    background: #ebecf0;
+    margin-bottom: 10px;
+    margin-top: -38px;
+    margin-left: 20px;
+    height: 30px;
+    color: black;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.plus img{
+    width: 20px;
+    height: 20px;
+    color: #95999c;
+    cursor: pointer;
+    display: inline-block;
+}
+.clearfix:after{
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+}
+[v-cloak] {
+    display: none;
+}

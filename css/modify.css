@@ -1,0 +1,85 @@
+.use{
+    font-size: 30px;
+}
+/*表格的样式*/
+#page .tab{
+    width: 100%;
+    border: 1px solid red;
+    /*边框不会重叠的属性*/
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+#page .user-btn{
+    border: 0;
+    padding: 5px 10px;
+    float: right;
+    background: #5584ff;
+    color: #fff;
+    margin-bottom: 10px;
+    margin-right: 37px;
+    margin-top: -11px;
+    font-size: 12px;
+    border-radius: 5px;
+    outline: none;
+}
+#page .clearfix:after{
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+
+}
+#page .use-plus{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#tr,.tr-one{
+    border: 1px solid green;
+    width: 50%;
+    height: 30px;
+}
+#page .tab td{
+    font-size: 14px;
+}
+#page .tab  span{
+    margin-left: 44px;
+}
+/*重置弹出框私有*/
+.input-box .head .use{
+    margin-top: 40px;
+    font-size: 20px;
+    color: #5a6268;
+}
+.input-box .head .use .use-us{
+    font-size: 16px;
+    margin-left: 43px;
+}
+.input-box .head .use .cont{
+    margin-left: 10px;
+}
+.input-three label {
+    width: 100%;
+    margin-left: 26px;
+    height: 35px;
+}
+/*添加服务的多行文本*/
+.texttarea1{
+    width: 80%;
+    margin-left: 74px;
+    height: 200px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #dcdee3;
+}
+[v-cloak] {
+    display: none;
+}
+
+

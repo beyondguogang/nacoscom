@@ -1,0 +1,179 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.logo {
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 30px
+}
+.title {
+    width: 100%;
+    height: 50px;
+    background: #1b1e21;
+    overflow: hidden;
+    position: relative;
+}
+.home{
+    position: relative;
+    height: 100vh;
+    background:url("http://console.nacos.io/nacos/img/black_dot.png")0% 0% / 14px 14px repeat;
+}
+.home .middle{
+    width: 600px;
+    margin-left: 40px;
+    position: absolute;
+    left: 0;
+    top:40%;
+    margin-top: -47px;
+    transform: translateY(-50%)
+}
+.home img{
+    display: block;
+    width: 257px;
+    height: 50px;
+    margin: 0;
+}
+.home .content{
+    opacity: .8;
+    font-family: Avenir-Medium;
+    font-size: 24px;
+    color: #fff;
+    max-width: 780px;
+    margin: 12px auto 30px;
+    text-align: left;
+}
+.sign{
+    position: absolute;
+    right: 40px;
+    width: 480px;
+    height: 540px;
+    top: 90px;
+    border: 0;
+    min-width: 100px;
+    border-radius: 3px;
+    box-shadow: none;
+    background: #fff;
+    overflow: hidden;
+}
+.title-con{
+    width: 100%;
+    line-height: 45px;
+    font-size: 32px;
+    margin-top: 58px;
+    text-align: center;
+    background: #fff;
+}
+.form{
+    width: 360px;
+    margin: 80px auto auto;
+}
+.line{
+    width: 100%;
+}
+.line input{
+    outline: none;
+}
+.warning{
+    color: red;
+    font-size: 12px;
+}
+.warning1{
+    border: 1px solid red;
+}
+.warning2{
+    border: 1px solid red;
+}
+.blue{
+    border: 1px solid #01a0e4;
+}
+.blue1{
+    border: 1px solid #01a0e4;
+}
+input{
+    height: 60px;
+    font-size: 16px;
+    width: 100%;
+    text-indent: 10px;
+}
+.password{
+    width: 100%;
+}
+.password input{
+    margin-top: 15px;
+    outline: none;
+}
+.btn button{
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    box-shadow: none;
+    text-decoration: none;
+    text-align: center;
+    text-transform: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    transition: all .1s linear;
+    line-height: 1;
+    cursor: pointer;
+    width: 101%;
+    height: 60px;
+    font-size: 16px;
+    background: #4190ff 100%;
+    color: #fff;
+    border: 0;
+    margin-top:60px;
+    outline: none;
+}
+.btn span{
+    text-decoration: inherit;
+    display: inline-block;
+    vertical-align: middle;
+}
+/*弹框*/
+/*设置内容由显示变为隐藏*/
+@-webkit-keyframes fade{
+    100%{opacity: 0;}
+    0%{opacity: 1;}
+}
+@-moz-keyframes fade{
+    100%{opacity: 0;}
+    0%{opacity: 1;}
+}
+@-o-keyframes fade{
+    100%{opacity: 0;}
+    0%{opacity: 1;}
+}
+@keyframes fade{
+    100%{opacity: 0;}
+    0%{opacity: 1;}
+}
+.spring-box{
+    -webkit-animation:fade 4s ease;
+    -moz-animation:fade 4s ease;
+    -o-animation:fade 4s ease;
+    animation:fade 4s ease;
+    width: 300px;
+    height: 165px;
+    background: #000;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 1;
+    opacity: .8;
+    border: 1px solid #1860E4;
+}
+.spring-box .spring-content{
+    text-align: center;
+    line-height: 165px;
+    font-size: 18px;
+    color: #fff;
+}
+
+[v-cloak] {
+    display: none;
+}

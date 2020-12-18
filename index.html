@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title src='img/g.svg'>nacos</title>
+    <link rel="shortcut icon" href="img/g.svg">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/item.css" rel="stylesheet">
+    <link href="css/seven.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/modify.css">
+    <link rel="stylesheet" href="css/server-find-detail.css">
+    <!-- <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> -->
+    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+<div id="app" v-cloak >
+    <!--头部-->
+    <div >
+        <div class="title">
+            <a href="#javascript">
+                <img alt="logo" class="logo" src="img/logo-2000-390.svg">
+            </a>
+            <div class="index-option">
+                <span class="index-use">{{fld_username}}</span>
+                <!-- <span @click="logout" class="index-out">退出</span> -->
+                <span class="index-out"><a :href="'http://10.0.17.119:8080/home/'+add">动态配置</a>></span>
+            </div>
+        </div>
+        <!--    左边栏-->
+        <div class="list-item">
+            <div class="list-item1">
+                <div class="flag"  v-show="heo">NACOS1.1.4</div>
+                <div class="sty" style="display: none;" v-show="sty" @click="back"></div>
+                <div class="project">
+                    <div class="item-list index-list" v-on:click="config_fn">
+                        <i class="fa fa-caret-right" aria-hidden="true" v-bind:class="{icon:isItemList}"></i>配置管理
+                    </div>
+
+                    <div class="dis" v-bind:class="{itemList:isItemList}">
+                        <div  :class="{index_in:index==shows}" @click="change(index,$event)" controller="slc" :id="'pid_'+project.fld_id" :projectId="project.fld_id"
+                              v-for="(project,index) in projectList" class="item-list-group item-list-group-one">{{project.fld_name}}</div>
+                    </div>
+
+                    <div class="item-list index-list" v-on:click="server_fn">
+
+                        <i class="fa fa-caret-right" aria-hidden="true" v-bind:class="{icon:isItemList1}"></i>服务管理
+                    </div>
+                    <div class="dis1" v-bind:class="{itemList1:isItemList1}">
+                        <div :class="{index_in:(index+projectList.length)==shows}" @click="change((index+projectList.length),$event)" controller="sflc" :id="'pid_'+project.fld_id" :projectId="project.fld_id"
+                             v-for="(project,index) in projectList" class="item-list-group">{{project.fld_name}}</div>
+                    </div>
+                    <div :class="{index_in:(projectList.length+projectList.length+2)==shows}" class="index-list item-list" controller="glc" @click="change(projectList.length+projectList.length+2,$event)" >分组管理</div>
+                    <div :class="{index_in:(projectList.length+projectList.length+3)==shows}" class="index-list item-list" controller="prlc" @click="change(projectList.length+projectList.length+3,$event)" >项目管理</div>
+
+
+                </div>
+
+    
+            </div>
+        </div>
+
+    </div>
+    
+    <iframe  id="iframe"  width="100%" height="100%" :src="show_tips?'serverList.html':''"  frameborder="no" border="1" marginwidth="0" marginheight="0" scrolling="yes"></iframe>
+      <div class="tips" v-if="show_tips_box">
+        <div class="popup">
+            <p class="content-tips">{{current_state}}</p>
+        </div>
+      </div>
+
+
+
+</div>
+</body>
+</html>
+
+<script src="node_modules/babel-polyfill/dist/polyfill.js"></script>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="lib/browser.min.js" ></script>
+<script type="text/babel" src="js/index.js"></script>
+<script src="js/config.js"></script>
+

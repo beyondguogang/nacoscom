@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title src='img/g.svg'>nacos</title>
+    <link rel="stylesheet" href="css/home-page.css">
+    <link rel="svg" href="img/g.svg">
+
+
+
+
+</head>
+
+<body>
+<div id="app" v-cloak>
+    <div class="title">
+        <a href="#javascript">
+            <img alt="logo" class="logo" src="img/logo-2000-390.svg">
+        </a>
+    </div>
+    <section class="home">
+        <div class="middle">
+            <img src="img/aaa.png" alt="">
+            <p class="content">an easy-to-use dynamic service discovery,
+                configuration and service management platform for
+                building cloud native applications</p>
+        </div>
+        <div class="sign">
+            <div class="title-con">
+                登录
+            </div>
+            <form class="form">
+                <div>
+                    <span class="line"><input @keyup.enter="submit" ref="username" type="text" autocomplete required="required" placeholder="请输入用户名" v-model="msm" :class="{warning1:shows_name,blue:display_name}" @input="in_put" @click="changes"></span>
+                </div>
+                <div class="warning" v-show="shows_name" >用户名不能为空</div>
+                <div><span class="password"><input @keyup.enter="submit" ref="password" type="password" autocomplete required="required" placeholder="请输入密码" v-model="msg" :class="{warning2:shows_pas,blue1:display_pas}" @input="in_pas"  @click="change"></span></div>
+                <div class="warning"  v-show="shows_pas">密码不能为空</div>
+                <div  class="btn"><button type="button" @click="submit" autofocus> <span>提交</span></button></div>
+            </form>
+        </div>
+    </section>
+    <div style="display: none;" class="spring-box" v-show="shows">
+        <p class="spring-content">{{verification}}</p>
+    </div>
+</div>
+
+</body>
+</html>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/login.js"></script>

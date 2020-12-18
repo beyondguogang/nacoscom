@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title src='img/g.svg'>nacos</title>
+    <link rel="shortcut icon" href="img/g.svg">
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="node_modules/codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/blackboard.css">
+    <link rel="stylesheet" href="css/server-list.css">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/item.css" rel="stylesheet">
+    <link href="css/input.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/modify.css">
+    <link rel="stylesheet" href="css/server-find-detail.css">
+
+
+
+
+
+
+
+
+</head>
+<body>
+<div id="app" v-cloak>
+    <div>
+        <div style="display: block" v-show="back">
+            <!--内容-->
+            <div class="content" >
+                <!--左边栏-->
+                <!--右边栏-->
+                <div class="page " >
+                    <!--右边栏头部导航-->
+                    <div class="header">
+                        <h5 >服务发现管理</h5>
+                    </div>
+                    <!-- <div class="content-right-nav">
+                        <span  @click="nameChange" :nameid="name.fld_id" v-for="(name,i) in nameList" :id="'name_id'+name.fld_id" :class="`${i>0?'sp2':'sp1'} ${i===nameList.length-1?'sp3':''}`">{{name.fld_name}}</span>
+                    </div> -->
+                    <div class="plus" @click="findAdd" :style="{opacity:opacity}"><a >
+                        <img   width="10px" height="10px" src="img/xiaochazi.png" alt=""></a></div>
+                    <div style="clear: both"></div>
+                    <!--动态显示查询结果  -->
+                    <div style="display: none"  class="server-box" v-show="find_add">
+                        <div><h5 class="server-header">添加服务</h5>  <img src="img/resizeApi.png" alt="" class="server-img" @click="findClose"></div>
+                        <div class="server-big">
+                            <div class="server-tow">
+                                <div class="server-name"><label>服务名称:</label> <input autocomplete="off" ref="serverFindName" type="text" class=""></div>
+                                <div class="server-name" style="margin-left: 40px;"><label class="find-label">group:</label><select id="groupValue" class="find-select">
+                                    <option v-for="group in groupList" :value="group.fld_id">{{group.fld_name}}</option>
+                                </select>
+                                </div>
+                                <!-- <div class="server-input"><label>保护阈值:</label> <input autocomplete="off" ref="serverFindYz" value=0 placeholder=0 type="text" class=""></div> -->
+                                <div>
+                                    <div class="server-meta">描述:</div>
+                                </div>
+                                <textarea ref="datavalue" class="texttarea" name="code_textarea" id="code_textarea"></textarea>
+                            </div>
+                            <div class="server-find-btn">
+                                <button @click="serverFindAdd" class="server-find-true">确定</button>
+                                <button class="server-find-false" @click="findClose">取消</button>
+                            </div>
+                        </div>
+                    </div>
+<!--                    表单提示弹框-->
+                    <div style="display: none;" class="server-spring-box" v-show="shows">
+                        <p class="server-spring-content">{{verification}}</p>
+                    </div>
+    
+                    <!--显示隐藏-->
+    
+                    <!--数据 头-->
+                    <div  class="server-find">
+                        <div class="server-query">Data ID:<input autocomplete="off" ref="namevalue" type="text" placeholder="模糊查询请输入Data Id"></label></div>
+                        <div class="server-group">Group:<input autocomplete="off" ref="groupvalue" type="text" placeholder="模糊查询请输入Group"></label></div>
+                        <div class="server-btn"><button @click="search">搜索</button></div>
+<!--                        <span  @click="groupChange" :groupid="group.fld_id"  v-for="(group,i) in groupList" :class="i>0?'server-list-group2':'server-list-group1'" >{{group.fld_name}}</span>-->
+                    </div>
+
+                    <div class="data">
+                        <table>
+                            <thead>
+                            <tr>  
+                                <th class="add">
+                                    <div>服务名称</div>
+                                </th>
+                                <th class="add">
+                                    <div>所属分组</div>
+                                </th>
+                                <th class="add">
+                                    <div>所属项目</div>
+                                </th>
+                                <th class="add">
+                                    <div>实例数</div>
+                                </th>
+                                <th class="add">
+                                    <div>操作</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody v-if="t_body">
+                                <tr v-for="serverFind in serverFindList" style="background: #e2e3e5">  
+                                    <td class="add" style="background:white ">{{serverFind.fld_name}}</td>
+                                    <td class="add" style="background:white ">{{serverFind.fld_group}}</td>
+                                    <td class="add" style="background:white ">{{serverFind.fld_project}}</td>
+                                    <td class="add" style="background:white ">{{serverFind.fld_enum}}</td>
+                                    <td class="add" style="background:white ">
+                                        <a @click="serverFindInfoShow(serverFind.fld_id)" href="#javascript">详情</a>
+                                        <a @click="serverDelFlag && serverFindDel(serverFind.fld_id)" href="#javascript" :style="{opacity:del_role}">删除</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+                <!--底部-->
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示框 -->
+    <div class="tips" v-if="show_tips_box">
+        <div class="popup">
+            <p class="content-tips">{{current_state}}</p>
+        </div>
+      </div>
+</div>
+</body>
+</html>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/codemirror/lib/codemirror.js"></script>
+<script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
+<script src="node_modules/codemirror/addon/edit/matchbrackets.js"></script>
+<script src="node_modules/codemirror/addon/selection/active-line.js"></script>
+<script src="node_modules/codemirror/addon/hint/show-hint.js"></script>
+<script src="node_modules/codemirror/addon/hint/html-hint.js"></script>
+<script src="node_modules/babel-polyfill/dist/polyfill.js"></script>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+<script src="lib/browser.min.js" ></script>
+<script src="js/config.js"></script>
+<script type="text/babel" src="js/serverFindList.js"></script>
+
+
